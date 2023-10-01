@@ -3,10 +3,13 @@ from llm.llm import LLM
 import regex as re
 from llm.vanna_model import VannaModel
 from threading import Thread
+from query_translation import Translation
 
 app = Flask('api_flask')
 
 llm_objects = {}
+
+translator = Translation()
 
 @app.route('/chat/v2', methods=['GET'])
 def retreive_query_v2():
@@ -31,6 +34,8 @@ def retreive_query():
         if hash in llm_objects:
             del llm_objects[hash]
         return Response("", status=200, mimetype='application/json')
+    #translate from [auto] to polish
+    query = translator.translate(query)
     #multiuser and context support
     if hash not in llm_objects:
         llm_objects[hash] = LLM()
