@@ -56,7 +56,7 @@ def retreive_query():
         return Response("{'output':'not found'}", status=404, mimetype='application/json')
     response_clear = re.findall(r'```(\n(.*)\n)```', response)
     #get first group    
-    return {'output':response_clear[0][1]}
+    return {'output':response_clear[0]}
 
     
 
