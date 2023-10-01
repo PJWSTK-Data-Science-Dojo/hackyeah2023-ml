@@ -2,6 +2,7 @@ from flask import Flask, request, Response
 from llm.llm import LLM
 import regex as re
 from llm.vanna_model import VannaModel
+from threading import Thread
 
 app = Flask('api_flask')
 
@@ -30,11 +31,20 @@ def retreive_query():
         if hash in llm_objects:
             del llm_objects[hash]
         return Response("", status=200, mimetype='application/json')
-    #multiuser support
+    #multiuser and context support
     if hash not in llm_objects:
         llm_objects[hash] = LLM()
-    llm_obj = llm_objects[hash]
-    response = llm_obj.chat(query)
+        llm_objects[hash].running = True
+        thread = Thread(target=llm_objects[hash].chat)
+        thread.start()
+
+    llm_objects[hash].set_query(query)
+    #wait for the respond
+    while(llm_objects[hash].get_response_availabilty() == False):
+        pass
+    response = llm_objects[hash].get_response()
+
+    #check if response is empty
     if "```" not in response:
         return Response("{'output':'not found'}", status=404, mimetype='application/json')
     response_clear = re.findall(r'```(\n(.*)\n)```', response)
