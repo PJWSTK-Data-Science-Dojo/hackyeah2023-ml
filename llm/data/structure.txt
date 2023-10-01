@@ -1,4 +1,4 @@
-JPK_HEADER: [HEADER_ID, SENDING_TIME, CREATION_TIME, START_DATE, END_DATE, YEAR_MONTH_CODE]
-JPK_SUBJECT: [SUBJECT_ID, HEADER_ID, TAX_ID, FIRST_NAME, LAST_NAME, DATE_OF_BIRTH, PHONE_NUMBER]
-VAT_SALES: [SALES_ID, HEADER_ID, COUNTERPARTY_NUMBER, SALES_DOCUMENT, ISSUE_DATE, SALES_DATE, P_6, P_8, P_9, P_11, P_13, P_15, P_16, P_19, P_96]
-VAT_PURCHASES: [PURCHASE_ID, HEADER_ID, SUPPLIER_NUMBER, PURCHASE_DOCUMENT, PURCHASE_DATE, RECEIPT_DATE, P_61, P_77, P_78]
+jpk_naglowek:naglowek_id(header_id),czas_wyslania(sending_time),czas_utworzenia(creation_time),data_od(date_from),data_do(date_to),rokmc(yearmc)
+jpk_podmiot:podmiot_id(subject_id),naglowek_id(header_id),nip,imie(name),nazwisko(last_name),data_urodzenia(date_of_birth),telefon(telephone)
+vat_sprzedaz:sprzedaz_id(sale_id),naglowek_id(header_id),nr_kontrahenta(contractor_no),dowod_sprzedazy(evidence_of_sale),data_wystawienia(date_of_issue),data_sprzedazy(sale_date),p_6,p_8,p_9,p_11(p_11),p_13(p_13),p_15(p_15),p_16(p_16),p_19(p_19),p_96(p_96)
+vat_zakup:zakup_id(purchase_id),naglowek_id(header_id),nr_dostawcy(supplier_no),dowod_zakupu(a_proof_of_purchase),data_zakupu(date_of_purchase),data_wplywu(date_of_receipt),p_61(p_61),p_77(p_77),p_78(p_78)
