@@ -11,7 +11,7 @@ llm_objects = {}
 
 translator = Translation()
 
-@app.route('/chat/v2', methods=['GET'])
+@app.route('/chat/v2', methods=['POST'])
 def retreive_query_v2():
     data = request.json
     query = data.get('query')
@@ -22,7 +22,7 @@ def retreive_query_v2():
     response = llm_obj.chat(query)
     return {'output':response}
 
-@app.route('/chat/', methods=['GET'])
+@app.route('/chat/', methods=['POST'])
 def retreive_query():
     data = request.json
     query = data.get('query')
