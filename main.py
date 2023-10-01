@@ -51,11 +51,13 @@ def retreive_query():
     if "```" not in response:
         return Response("{'output':'not found'}", status=404, mimetype='application/json')
     response_clear = re.findall(r'```(\n(.*)\n)```', response)
-    #clean output
-    resp = response_clear[0]
-    if ',' in response_clear[0]:
-        resp = response_clear.split(',')[1]
-    return {'output':resp}
+    #get first group    
+    return {'output':response_clear[0][1]}
+
+    
+
+    
+
 
 @app.route('/structure/', methods=['POST'])
 def retreive_context():
@@ -66,6 +68,7 @@ def retreive_context():
         f.write(data.get('context'))
     return Response("", status=200, mimetype='application/json')
 
+    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=105)
