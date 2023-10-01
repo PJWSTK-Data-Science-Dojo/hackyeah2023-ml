@@ -1,0 +1,173 @@
+NFO:gpt4all.pyllmodel:LLModel.prompt_model -- prompt:
+### User:
+Get the sql query to get Concatenate name and surname from JPK_PODMIOT with space separator. Display result as IMIE_NAZWISKO.Display only 5 rows. from database
+### Response:
+
+===/LLModel.prompt_model -- prompt/===
+ Here's an example SQL query to concatenate the name and surname of each taxpayer in the `jpk_podmiot` table and display the resulting string as 
+'IMIE_NAZWISKO' with a space separator:
+
+```
+SELECT CONCAT(imie(naglowek_id), ' ', nazwisko(naglowek_id)) AS IMIE_NAZWISKO FROM jpk_podmiot;
+```
+
+This query uses the `CONCAT` function to concatenate the name and surname columns (`imie_naglowek` and `nazwisko_naglowek`) with a space separator. The `AS IMIE_NAZWISKO` statement is used to display the resulting string as 'IMIE_NAZWISKO'. This query will only display the first
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:24:03] "GET /chat/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:27:09] "POST /chat/v2 HTTP/1.1" 200 -
+INFO:gpt4all.pyllmodel:LLModel.prompt_model -- prompt:
+### User:
+Get the sql query to get Count number of days between DATA_DO and DATA_OD for ech NAGLOWEK_ID from table JPK_NAGLOWEK.As a result display 5 rows 
+from DATA_OD, DATA_DO and ROZNICA_DNI. from database
+### Response:
+
+===/LLModel.prompt_model -- prompt/===
+ Here's an example SQL query to count the number of days between `data_do` and `data_od` for each taxpayer in the `jpk_naglowek` table and display the resulting string as 'ROZNICA_DNI':
+
+```
+SELECT COUNT(*) FROM jpk_naglowek WHERE naglowek_id IN (SELECT DISTINCT naglowek_id FROM jpk_na
+ERROR:api_flask:Exception on /chat/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Users\adrianko\Desktop\hackyeah\api_flask\main.py", line 59, in retreive_query
+    return {'output':response_clear[0][1]}
+IndexError: list index out of range
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:29:10] "GET /chat/ HTTP/1.1" 500 -
+INFO:gpt4all.pyllmodel:LLModel.prompt_model -- prompt:
+### User:
+Get the sql query to get Count number of days between DATA_DO and DATA_OD for ech NAGLOWEK_ID from table JPK_NAGLOWEK.As a result display 5 rows 
+from DATA_OD, DATA_DO and ROZNICA_DNI. from database
+### Response:
+
+===/LLModel.prompt_model -- prompt/===
+ Here's an example SQL query to count the number of days between `data_do` and `data_od` for each taxpayer in the `jpk_naglowek` table and display the resulting string as 'ROZNICA_DNI':
+
+```
+SELECT COUNT(*) FROM jpk_naglowek WHERE naglowek_id IN (SELECT DISTINCT naglowek_id FROM jpk_na### User:
+ERROR:api_flask:Exception on /chat/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Users\adrianko\Desktop\hackyeah\api_flask\main.py", line 59, in retreive_query
+    return {'output':response_clear[0][1]}
+IndexError: list index out of range
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:31:54] "GET /chat/ HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:36:18] "POST /chat/v2 HTTP/1.1" 200 -
+INFO:gpt4all.pyllmodel:LLModel.prompt_model -- prompt:
+### User:
+Get the sql query to get Group ROKMC, NR_CONTRACTOR, DOWOD_SPRZEDAZY from tables VAT_SPRZEDAZ and JPK_NAGLOWEK. Join tables on JPK_NAGLOWEK.NAGLOWEK_ID and VAT_SPRZEDAZ.NAGLOWEK_ID. Display 5 rows only. from database
+### Response:
+
+===/LLModel.prompt_model -- prompt/===
+LLaMA: reached the end of the context window so resizing
+ Here's an example SQL query to retrieve the `ROKMC`, `NR_CONTRACTOR`, and `DOWOD_SPRZEDAZY` columns from the `vat_sprzedaz` and `jpk_naglowek` tables, join them on `jpk_naglowek.NAGLOWEK_ID` and `vat_sprzedaz.NAGLOWEK_ID`, and display only the first 5 rows:
+
+```
+SELECT jpk_naglowek.ROKMC, jpk_naglowek.NR_CONTRACTOR, jpk_naglowek.DOWOD_SPRZEDAZY
+FROM jpk_naglowek
+JOIN VAT_SPRZEDAZ ON jpk_naglowek.NAGLOWE
+ERROR:api_flask:Exception on /chat/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Users\adrianko\Desktop\hackyeah\api_flask\main.py", line 59, in retreive_query
+    return {'output':response_clear[0][1]}
+IndexError: list index out of range
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:42:43] "GET /chat/ HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:45:40] "POST /chat/v2 HTTP/1.1" 200 -
+INFO:gpt4all.pyllmodel:LLModel.prompt_model -- prompt:
+### User:
+Get the sql query to get Show sums of P_6, P_8, P_9 for ROKMC, NR_KONTRAHENTA and DOWOD_SPRZEDAZY from tables JPK_NAGLOWEK and VAT_SPRZEDAZ.As a 
+result show ROKMC, NR_KONTRAHENTA and DOWOD_SPRZEDAZY for above sums. from database
+### Response:
+
+===/LLModel.prompt_model -- prompt/===
+ Here's an example SQL query to retrieve the sum of `P_6`, `P_8`, and `P_9` columns from the `jpk_naglowek` and `vat_sprzedaz` tables, join them 
+on `jpk_naglowek.NAGLOWEK_ID` and `vat_sprzedaz.NAGLOWEK_ID`, and display only the sums for `ROKMC`, `NR_KONTRAHENTA`, and `DOWOD_SPRZEDAZY`:    
+
+```
+SELECT jpk_naglowek.ROKMC, jpk_naglowek.NR_CONTRACTOR, jpk_naglowek.DOWOD_SPRZEDAZY
+FROM jpk_naglowek
+JOIN VAT_SP
+ERROR:api_flask:Exception on /chat/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Users\adrianko\Desktop\hackyeah\api_flask\main.py", line 59, in retreive_query
+    return {'output':response_clear[0][1]}
+IndexError: list index out of range
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:48:46] "GET /chat/ HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:50:21] "POST /chat/v2 HTTP/1.1" 200 -
+INFO:gpt4all.pyllmodel:LLModel.prompt_model -- prompt:
+### User:
+Get the sql query to get Give the number of purchase invoices in which the net value of purchases of goods and services included in the taxpayer’s fixed assets (P_77) is greater than 500 PLN. from database
+### Response:
+
+===/LLModel.prompt_model -- prompt/===
+ Here's an example SQL query to retrieve the number of purchase invoices in which the net value of purchases of goods and services included in the taxpayer's fixed assets (`P_77`) is greater than 500 Polish zloty (`PLN`), from the `jpk_naglowek` table:
+
+```
+SELECT COUNT(*) FROM jpk_naglowek WHERE P_77 > 500;
+```
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:53:42] "GET /chat/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:54:53] "POST /chat/v2 HTTP/1.1" 200 -
+INFO:gpt4all.pyllmodel:LLModel.prompt_model -- prompt:
+### User:
+Get the sql query to get SELECT PROOF_PURCHASE AS Invoice_Number, DATE OF PURCHASE AS Invoice_Date
+FROM VAT_PURCHASE
+WHERE YEARMC = 202301
+UNION ALL
+SELECT SALES_PROOF, ISSUANCE_DATE
+FROM VAT_SALES
+WHERE YEARMC = 202301; from database
+### Response:
+
+===/LLModel.prompt_model -- prompt/===
+ Here's an example SQL query to retrieve the `PROOF_PURCHASE` and `DATE_OF_PURCHASE` columns from the `vat_purchase` and `sales_proof` tables, join them on `VAT_PURCHASE.YEARMC` and `SALES_PROOF.ISSUANCE_DATE`, and display only the rows where `YEARMC` is equal to 202301:
+
+```
+SELECT PROOF_PURCHASE AS Invoice_Number, DATE_OF_PURCHASE AS Invoice_Date
+FROM VAT_PURCHASE
+WHERE YEARMC = 202301
+UNION ALL
+SELECT SALES_PROOF, ISSUANCE_DATE
+FROM VAT_SALES
+WHERE YEARMC = 2
+ERROR:api_flask:Exception on /chat/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\adrianko\Desktop\hackyeah\venv\lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Users\adrianko\Desktop\hackyeah\api_flask\main.py", line 59, in retreive_query
+    return {'output':response_clear[0][1]}
+IndexError: list index out of range
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2023 10:59:36] "GET /chat/ HTTP/1.1" 500 -
