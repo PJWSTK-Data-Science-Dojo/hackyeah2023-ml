@@ -1,7 +1,7 @@
 import re
 from deep_translator import GoogleTranslator
 
-translator = GoogleTranslator(source='pl', target='en')
+translator = GoogleTranslator(source='auto', target='en')
 
 def translate(ddl_code):
     output_string = ""
