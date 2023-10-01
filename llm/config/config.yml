@@ -10,3 +10,6 @@ data:
   structure_file: llm/data/structure.txt
   context_intro_file: llm/data/context_intro.txt
   llm_query_file: llm/data/llm_query.txt
+vanna:
+  api_key: b561f5f9378046cc9b320b78e2ae1d0f
+  model: sqlmodel
