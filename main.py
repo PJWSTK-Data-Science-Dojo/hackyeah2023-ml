@@ -4,7 +4,6 @@ import regex as re
 from llm.vanna_model import VannaModel
 from threading import Thread
 from query_translation import Translation
-from ddl_converter import translate
 
 app = Flask('api_flask')
 
@@ -23,9 +22,7 @@ def retreive_query_v2():
     response = llm_obj.chat(query)
     return {'output':response}
 
-
-
-@app.route('/chat/', methods=['GET'])
+@app.route('/chat/', methods=['POST'])
 def retreive_query():
     data = request.json
     query = data.get('query')
@@ -65,15 +62,10 @@ def retreive_query():
 @app.route('/structure/', methods=['POST'])
 def retreive_context():
     data = request.json
-
-    #validate if input is in DDL format
-    ddl_code = data.get('context')
-    matches = re.findall(r':', ddl_code) #TODO: validation
-    if len(matches) == 0:
-        return Response("", status=400, mimetype='application/json')
+    print(data.get('context'))
+    #delete context file
     with open('llm/data/structure.txt', 'w') as f:
-        new_context = translate(ddl_code)
-        f.write(new_context)
+        f.write(data.get('context'))
     return Response("", status=200, mimetype='application/json')
 
     
