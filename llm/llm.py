@@ -5,6 +5,7 @@ logging.basicConfig(level=logging.INFO)
 class LLM:
     def __init__(self):
         self.model_name = config['model']['model_name']
+        self.model_dir = config['model']['model_directory']
         self.temperature = config['model']['temperature']
         self.context_intro_file = config['data']['context_intro_file']
         self.llm_query_file = config['data']['llm_query_file']
@@ -18,7 +19,7 @@ class LLM:
         self.llm_context = open(self.context_intro_file, 'r').read()
         self.llm_structure = open(self.llm_structure_file, 'r').read()
         #objects
-        self.model = GPT4All(self.model_name)
+        self.model = GPT4All(model_path = f'{self.model_dir}', model_name=self.model_name)
         #self.model.chat_session(f'{self.llm_context} {self.llm_structure}')
     
     def chat(self, query):
