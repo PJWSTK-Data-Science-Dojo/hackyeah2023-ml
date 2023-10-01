@@ -1,5 +1,6 @@
 model:
   model_name: orca-mini-13b.ggmlv3.q4_0.bin
+  model_directory: llm/models/
   temperature: 0.1
   streaming: false
   max_tokens: 200
