@@ -18,8 +18,6 @@ def retreive_query_v2():
     response = llm_obj.chat(query)
     return {'output':response}
 
-
-
 @app.route('/chat/', methods=['GET'])
 def retreive_query():
     data = request.json
@@ -44,11 +42,6 @@ def retreive_query():
         resp = response_clear.split(',')[1]
     return {'output':resp}
 
-    
-
-    
-
-
 @app.route('/structure/', methods=['POST'])
 def retreive_context():
     data = request.json
@@ -58,7 +51,6 @@ def retreive_context():
         f.write(data.get('context'))
     return Response("", status=200, mimetype='application/json')
 
-    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=105)
