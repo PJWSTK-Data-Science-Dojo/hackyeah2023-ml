@@ -1,10 +1,24 @@
 from flask import Flask, request, Response
 from llm.llm import LLM
 import regex as re
+from llm.vanna_model import VannaModel
 
 app = Flask('api_flask')
 
 llm_objects = {}
+
+@app.route('/chat/v2', methods=['GET'])
+def retreive_query_v2():
+    data = request.json
+    query = data.get('query')
+    hash = data.get('hash')
+    if hash not in llm_objects:
+        llm_objects[hash] = VannaModel()
+    llm_obj = llm_objects[hash]
+    response = llm_obj.chat(query)
+    return {'output':response}
+
+
 
 @app.route('/chat/', methods=['GET'])
 def retreive_query():
