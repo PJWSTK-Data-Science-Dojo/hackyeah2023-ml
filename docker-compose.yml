@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "7000:105"
+      - "7001:106"
     volumes:
       - C:\Users\pexoy\Desktop\HackYeah\Model:/model
 
