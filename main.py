@@ -35,7 +35,7 @@ def retreive_query():
         if hash in llm_objects:
             del llm_objects[hash]
         return Response("", status=200, mimetype='application/json')
-    #translate from [auto] to polish
+    #translate from [auto] to english
     query = translator.translate(query)
     #multiuser and context support
     if hash not in llm_objects:
@@ -49,6 +49,7 @@ def retreive_query():
     while(llm_objects[hash].get_response_availabilty() == False):
         pass
     response = llm_objects[hash].get_response()
+    print(response)
 
     #check if response is empty
     if "```" not in response:
@@ -68,6 +69,7 @@ def retreive_context():
 
     #validate if input is in DDL format
     ddl_code = data.get('context')
+    print(ddl_code)
     matches = re.findall(r':', ddl_code) #TODO: validation
     if len(matches) == 0:
         return Response("", status=400, mimetype='application/json')
