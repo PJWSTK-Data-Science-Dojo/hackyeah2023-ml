@@ -21,10 +21,29 @@ class LLM:
         #objects
         self.model = GPT4All(model_path = f'{self.model_dir}', model_name=self.model_name)
         #self.model.chat_session(f'{self.llm_context} {self.llm_structure}')
+        self.query = None
+        self.running = False
+        self.response_available = False
+
+    def set_query(self, query):
+        self.query = query
+
+    def get_running_status(self):
+        return self.running
+
+    def get_response(self):
+        self.response_available = False
+        return self.response
     
-    def chat(self, query):
+    def get_response_availabilty(self):
+        return self.response_available
+
+    def chat(self):
         with self.model.chat_session(f'{self.llm_context}\n{self.llm_structure}'):
             #wait for the API to respond
-            connected_query = self.llm_query.replace('<FILL>', query)
-            response = self.model.generate(connected_query, temp = self.temperature, top_k = self.top_k, top_p = self.top_p)
-            return response
+            while(self.query != 'koniec'):
+                if(self.query != None):
+                    connected_query = self.llm_query.replace('<FILL>', self.query)
+                    self.response = self.model.generate(connected_query, temp = self.temperature, top_k = self.top_k, top_p = self.top_p)
+                    self.response_available = True
+                    self.query = None
