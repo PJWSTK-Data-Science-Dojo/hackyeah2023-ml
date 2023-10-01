@@ -68,7 +68,6 @@ def retreive_context():
 
     #validate if input is in DDL format
     ddl_code = data.get('context')
-    print(ddl_code)
     matches = re.findall(r':', ddl_code) #TODO: validation
     if len(matches) == 0:
         return Response("", status=400, mimetype='application/json')
