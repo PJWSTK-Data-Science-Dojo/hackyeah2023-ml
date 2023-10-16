@@ -4,4 +4,4 @@ COPY . /app
 EXPOSE 105
 ENV FLASK_ENV=production
 RUN chmod +x /app/run.sh
-CMD ["./run.sh"]
+CMD ["./app/run.sh"]

@@ -1,14 +1,18 @@
 version: '3'
 
 services:
-  your_service_name:
+  hackyeah-ml-service:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "7000:105"
-    volumes:
-      - C:\Users\pexoy\Desktop\HackYeah\Model:/model
+      - "127.0.0.1:7000:105"
+    networks:  
+      - hackyeah-network
 
 volumes:
   model_volume:
+
+networks:
+  hackyeah-network:
+    external: true
