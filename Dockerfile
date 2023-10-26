@@ -3,5 +3,5 @@ WORKDIR /app
 COPY . /app
 EXPOSE 105
 ENV FLASK_ENV=production
-RUN chmod +x /app/run.sh
-CMD ["./run.sh"]
+RUN chmod +x /app/start.sh
+ENTRYPOINT ["/app/start.sh"]
