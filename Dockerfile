@@ -3,5 +3,8 @@ WORKDIR /app
 COPY . /app
 EXPOSE 105
 ENV FLASK_ENV=production
-RUN chmod +x /app/start.sh
-ENTRYPOINT ["/app/start.sh"]
+
+RUN pip install --upgrade pip && \
+    pip install --trusted-host pypi.python.org -r requirements.txt
+
+ENTRYPOINT ["python", "main.py"]
